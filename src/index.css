@@ -1,4 +1,4 @@
- body {
+  body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,68 +12,95 @@ code {
     monospace;
 }
  
+ 
 .Cart {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 20px;
   padding: 20px;
-  background-color: #f9f9f9;
+  justify-items: center;
 }
 
+ 
 .Cart div {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 15px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
-  width: 200px;
   text-align: center;
-  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  max-width: 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .Cart div:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+ 
 .Cart img {
-  max-width: 100px;
-  height: auto;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.Cart p {
-  font-size: 18px;
-  margin: 10px 0;
+  margin-bottom: 15px;
 }
 
 .Cart button {
-  background-color: #4caf50;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
-  margin: 5px;
   transition: background-color 0.3s ease;
 }
 
 .Cart button:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
-.Cart button:active {
-  transform: scale(0.98);
-}
 
-.Cart .TotalCount {
-  font-size: 24px;
+.totalcount {
+  grid-column: 1 / -1;  
+  background-color: #28a745;
+  color: white;
   font-weight: bold;
-  margin-top: 20px;
+  font-size: 22px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
-  width: 100%;
-  color: #333;
+  margin-top: 30px;
 }
-.totalcount{
-  font-weight: bolder;
+
+.totalcount:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+ 
+@media (max-width: 900px) {
+  .Cart {
+      grid-template-columns: repeat(2, 1fr);  
+  }
+}
+
+@media (max-width: 600px) {
+  .Cart {
+      grid-template-columns: repeat(1, 1fr);  
+  }
+
+  .Cart div {
+      max-width: 100%;
+  }
+
+  .totalcount {
+      font-size: 20px;
+      padding: 10px;
+  }
 }
